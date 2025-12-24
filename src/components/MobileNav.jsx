@@ -220,10 +220,7 @@ const MobileNav = () => {
               Account
             </div>
           ) : (
-            <Link
-              to={userInfo ? "/profile" : "/login"}
-              className="flex flex-col items-center text-sm"
-            >
+            <Link to={"/login"} className="flex flex-col items-center text-sm">
               <AiOutlineUser size={20} />
               Account
             </Link>
