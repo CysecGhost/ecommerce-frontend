@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import Keyboard from "../assets/Homepage-keyboard-2.jpg";
+import Keyboard from "../assets/Homepage-Keyboard-2.jpg";
 import Headphones from "../assets/Homepage-Headphones-4.jpg";
 import Watch from "../assets/Homepage-Smartwatch-2.jpg";
 import Headphones2 from "../assets/Homepage-Headphones-video-1.mp4";
