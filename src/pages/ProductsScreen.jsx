@@ -80,7 +80,7 @@ const ProductsScreen = () => {
         <div className=" w-full flex flex-col justify-center items-center space-y-2 space-x-0 relative mt-6">
           <div
             className={`relative w-full flex flex-row justify-center md:justify-start items-center space-y-0 space-x-2 py-2 bg-gray-900 ${
-              isSticky ? "sticky inset-8 z-50 shadow-lg" : ""
+              isSticky ? "sticky inset-10 z-50 shadow-lg" : ""
             }`}
           >
             <div className="relative inline-block">
