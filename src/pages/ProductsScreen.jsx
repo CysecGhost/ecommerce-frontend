@@ -77,12 +77,13 @@ const ProductsScreen = () => {
         </div>
 
         {/* Flex Container */}
-        <div className=" w-full flex flex-col justify-center items-center space-y-2 space-x-0 relative mt-6">
+        <div className="relative w-full flex flex-col justify-center items-center space-y-2 space-x-0 mt-6">
           <div
             className={`relative w-full flex flex-row justify-center md:justify-start items-center space-y-0 space-x-2 py-2 bg-gray-900 ${
               isSticky ? "sticky inset-14 z-50 shadow-lg" : ""
             }`}
           >
+            {/* Filter */}
             <div className="relative inline-block">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -94,142 +95,152 @@ const ProductsScreen = () => {
                 </span>
               </button>
 
+              {/* Filter Dropdown */}
               {isOpen && (
-                <div
-                  className={`fixed bottom-0 left-0 right-0 md:absolute md:top-full md:left-0 md:h-screen md:w-60 h-[70vh] w-full px-2 bg-gray-900 transform transition duration-500 ease-in-out ${
-                    isOpen
-                      ? "md:translate-x-0 translate-y-0"
-                      : "md:translate-x-full translate-y-full"
-                  }`}
-                >
-                  <div className="flex flex-col justify-between items-center mt-4 py-4 border-b-2 border-gray-800">
-                    <div
-                      onClick={() =>
-                        document
-                          .getElementById("cat-dropdown")
-                          .classList.toggle("max-h-96")
-                      }
-                      className="w-full flex justify-between items-center cursor-pointer mt-6"
-                    >
-                      <p className="text-md">Category</p>
-                      <span className="text-sm">⌄</span>
-                    </div>
-                    <div
-                      id="cat-dropdown"
-                      className="w-full max-h-0 flex flex-col justify-center items-start transition-all duration-700 ease-in-out overflow-hidden"
-                    >
-                      {categories.map((cat, index) => (
-                        <label
-                          key={index}
-                          className="flex flex-row justify-start items-center space-y-0 space-x-2 py-2 pl-2"
-                        >
-                          <input
-                            type="checkbox"
-                            name="category"
-                            value={cat}
-                            checked={category.split(",").includes(cat)}
-                            onClick={() => {
-                              const params = new URLSearchParams(searchParams);
-                              const current =
-                                params.get("category")?.split(",") || [];
-
-                              let updated;
-                              if (current.includes(cat)) {
-                                updated = current.filter((c) => c !== cat);
-                              } else {
-                                updated = [...current, cat];
-                              }
-
-                              if (updated.length > 0) {
-                                params.set("category", updated.join(","));
-                              } else {
-                                params.delete("category");
-                              }
-
-                              params.set("page", 1);
-                              setSearchParams(params);
-                            }}
-                            className="text-sm cursor-pointer"
-                          ></input>
-                          <span>{cat}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Price Range */}
-                  <div className="flex flex-col justify-between items-center mt-4 py-4 border-b-2 border-gray-800">
-                    <div
-                      onClick={() =>
-                        document
-                          .getElementById("pr-dropdown")
-                          .classList.toggle("max-h-96")
-                      }
-                      className="w-full flex justify-between items-center cursor-pointer mt-6"
-                    >
-                      <p className="text-md">Price Range</p>
-                      <span className="text-sm">⌄</span>
-                    </div>
-                    <div
-                      id="pr-dropdown"
-                      className="w-full max-h-0 flex flex-col justify-center items-start space-y-4 mt-4 transition-all duration-700 ease-in-out overflow-hidden"
-                    >
-                      <input
-                        type="range"
-                        name="minPrice"
-                        min={priceRange.min}
-                        max={priceRange.max}
-                        value={sliderMin}
-                        onChange={(e) => {
-                          const value = Number(e.target.value);
-                          if (value > sliderMax) return;
-
-                          const params = new URLSearchParams(searchParams);
-                          params.set("minPrice", value);
-                          params.set("page", 1);
-                          setSearchParams(params);
-                        }}
-                      />
-
-                      <input
-                        type="range"
-                        name="maxPrice"
-                        min={priceRange.min}
-                        max={priceRange.max}
-                        value={sliderMax}
-                        onChange={(e) => {
-                          const value = Number(e.target.value);
-                          if (value < sliderMin) return;
-
-                          const params = new URLSearchParams(searchParams);
-                          params.set("maxPrice", value);
-                          params.set("page", 1);
-                          setSearchParams(params);
-                        }}
-                      />
-                      {minPrice !== null && (
-                        <p>
-                          ${minPrice} - ${maxPrice}
-                        </p>
-                      )}
-                      <button
-                        onClick={() => {
-                          const params = new URLSearchParams(searchParams);
-                          params.delete("minPrice");
-                          params.delete("maxPrice");
-                          params.set("page", 1);
-                          setSearchParams(params);
-                        }}
-                        className="px-3 py-1 rounded bg-gray-700 text-white"
+                <>
+                  <div
+                    onClick={() => setIsOpen(false)}
+                    className="fixed inset-0 bg-transparent opacity-50"
+                  />
+                  <div
+                    className={`fixed bottom-0 left-0 right-0 md:absolute md:top-full md:left-0 md:h-screen md:w-60 h-[70vh] w-full px-2 bg-gray-900 transform transition duration-500 ease-in-out ${
+                      isOpen
+                        ? "md:translate-x-0 translate-y-0"
+                        : "md:translate-x-full translate-y-full"
+                    }`}
+                  >
+                    <div className="flex flex-col justify-between items-center mt-4 py-4 border-b-2 border-gray-800">
+                      <div
+                        onClick={() =>
+                          document
+                            .getElementById("cat-dropdown")
+                            .classList.toggle("max-h-96")
+                        }
+                        className="w-full flex justify-between items-center cursor-pointer mt-6"
                       >
-                        Clear
-                      </button>
+                        <p className="text-md">Category</p>
+                        <span className="text-sm">⌄</span>
+                      </div>
+                      <div
+                        id="cat-dropdown"
+                        className="w-full max-h-0 flex flex-col justify-center items-start transition-all duration-700 ease-in-out overflow-hidden"
+                      >
+                        {categories.map((cat, index) => (
+                          <label
+                            key={index}
+                            className="flex flex-row justify-start items-center space-y-0 space-x-2 py-2 pl-2"
+                          >
+                            <input
+                              type="checkbox"
+                              name="category"
+                              value={cat}
+                              checked={category.split(",").includes(cat)}
+                              onClick={() => {
+                                const params = new URLSearchParams(
+                                  searchParams
+                                );
+                                const current =
+                                  params.get("category")?.split(",") || [];
+
+                                let updated;
+                                if (current.includes(cat)) {
+                                  updated = current.filter((c) => c !== cat);
+                                } else {
+                                  updated = [...current, cat];
+                                }
+
+                                if (updated.length > 0) {
+                                  params.set("category", updated.join(","));
+                                } else {
+                                  params.delete("category");
+                                }
+
+                                params.set("page", 1);
+                                setSearchParams(params);
+                              }}
+                              className="text-sm cursor-pointer"
+                            ></input>
+                            <span>{cat}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Price Range */}
+                    <div className="flex flex-col justify-between items-center mt-4 py-4 border-b-2 border-gray-800">
+                      <div
+                        onClick={() =>
+                          document
+                            .getElementById("pr-dropdown")
+                            .classList.toggle("max-h-96")
+                        }
+                        className="w-full flex justify-between items-center cursor-pointer mt-6"
+                      >
+                        <p className="text-md">Price Range</p>
+                        <span className="text-sm">⌄</span>
+                      </div>
+                      <div
+                        id="pr-dropdown"
+                        className="w-full max-h-0 flex flex-col justify-center items-start space-y-4 mt-4 transition-all duration-700 ease-in-out overflow-hidden"
+                      >
+                        <input
+                          type="range"
+                          name="minPrice"
+                          min={priceRange.min}
+                          max={priceRange.max}
+                          value={sliderMin}
+                          onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (value > sliderMax) return;
+
+                            const params = new URLSearchParams(searchParams);
+                            params.set("minPrice", value);
+                            params.set("page", 1);
+                            setSearchParams(params);
+                          }}
+                        />
+
+                        <input
+                          type="range"
+                          name="maxPrice"
+                          min={priceRange.min}
+                          max={priceRange.max}
+                          value={sliderMax}
+                          onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (value < sliderMin) return;
+
+                            const params = new URLSearchParams(searchParams);
+                            params.set("maxPrice", value);
+                            params.set("page", 1);
+                            setSearchParams(params);
+                          }}
+                        />
+                        {minPrice !== null && (
+                          <p>
+                            ${minPrice} - ${maxPrice}
+                          </p>
+                        )}
+                        <button
+                          onClick={() => {
+                            const params = new URLSearchParams(searchParams);
+                            params.delete("minPrice");
+                            params.delete("maxPrice");
+                            params.set("page", 1);
+                            setSearchParams(params);
+                          }}
+                          className="px-3 py-1 rounded bg-gray-700 text-white"
+                        >
+                          Clear
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </>
               )}
             </div>
 
+            {/* Sort */}
             <div className="relative inline-block">
               <select
                 value={sort}

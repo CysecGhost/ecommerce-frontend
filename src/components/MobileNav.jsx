@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   AiOutlineHome,
   AiOutlineSearch,
@@ -9,8 +9,12 @@ import {
 } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import { HiOutlineMenu } from "react-icons/hi";
+import { toast } from "react-toastify";
+import { useLogoutMutation } from "../slices/userApiSlice";
+import { logout } from "../slices/authSlice";
 
 const MobileNav = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -20,18 +24,41 @@ const MobileNav = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
+  const [logoutMutation] = useLogoutMutation();
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
       setKeyword("");
       setShowSearch(false);
-      navigate(`/search?keyword=${keyword}`);
+      navigate(`/products?keyword=${keyword}`);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logoutMutation();
+    } catch (err) {
+      const message =
+        err?.data?.message || err?.error || "Something went wrong";
+      console.error(message);
+      toast.error(`Logout Error: ${message}`);
+    } finally {
+      dispatch(logout());
+      navigate("/");
+      toast.success("Logout successful");
     }
   };
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-gray-900 shadow-md border-t border-gray-900 z-50 md:hidden">
       {/* Search Bar */}
+      {showSearch && (
+        <div
+          className="fixed inset-0 bg-black opacity-50"
+          onClick={() => setShowSearch(false)}
+        ></div>
+      )}
       <div
         className={`h-[90vh] fixed bottom-0 left-0 right-0 transform transition-transform duration-300 ease-in-out ${
           showSearch ? "translate-y-0" : "translate-y-full"
@@ -63,6 +90,12 @@ const MobileNav = () => {
       </div>
 
       {/* Menu */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50"
+          onClick={() => setIsOpen(false)}
+        ></div>
+      )}
       <div
         className={`h-[90vh] fixed bottom-0 left-0 right-0 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "translate-y-full"
@@ -122,6 +155,12 @@ const MobileNav = () => {
       </div>
 
       {/* Account */}
+      {isAccountOpen && (
+        <div
+          className="fixed inset-0 bg-black opacity-50"
+          onClick={() => setIsAccountOpen(false)}
+        ></div>
+      )}
       {userInfo && (
         <div
           className={`h-[90vh] fixed bottom-0 left-0 right-0 transform transition-transform duration-300 ease-in-out ${
@@ -161,9 +200,12 @@ const MobileNav = () => {
                   Cart
                 </button>
               </Link>
-              <Link to="/logout">
+              <Link>
                 <button
-                  onClick={() => setIsAccountOpen(false)}
+                  onClick={() => {
+                    setIsAccountOpen(false);
+                    handleLogout();
+                  }}
                   className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700"
                 >
                   Logout

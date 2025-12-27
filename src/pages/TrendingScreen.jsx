@@ -12,7 +12,7 @@ const TrendingScreen = () => {
       {/* Flex Container */}
       <div className="flex flex-col space-y-6 space-x-0">
         {/* Heading and Subtext */}
-        <div className="flex flex-col justify-center items-center space-y-4 space-x-0">
+        <div className="hidden md:flex flex-col justify-center items-center space-y-4 space-x-0">
           <h2 className="text-3xl font-[Montserrat] font-bold md:text-4xl">
             Products
           </h2>
@@ -25,7 +25,7 @@ const TrendingScreen = () => {
         {/* Flex Container */}
         <div className="container mx-auto w-full flex flex-col justify-center items-center space-y-6 space-x-0 relative mt-6 overflow-hidden">
           {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 mb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4 mb-4">
             {products?.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

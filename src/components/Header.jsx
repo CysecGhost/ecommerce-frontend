@@ -1,12 +1,17 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import Backdrop from "./Backdrop";
 import { AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 
 import logo from "../assets/logo4.png";
+import { toast } from "react-toastify";
+import { useLogoutMutation } from "../slices/userApiSlice";
+import { logout } from "../slices/authSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +22,8 @@ const Header = () => {
 
   const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
 
+  const [logoutMutation] = useLogoutMutation();
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
@@ -24,9 +31,24 @@ const Header = () => {
       setKeyword("");
     }
   };
+
+  const handleLogout = async () => {
+    try {
+      await logoutMutation();
+    } catch (err) {
+      const message =
+        err?.data?.message || err?.error || "Something went wrong";
+      console.error(message);
+      toast.error(`Logout Error: ${message}`);
+    } finally {
+      dispatch(logout());
+      navigate("/");
+      toast.success("Logout successful");
+    }
+  };
   return (
     <header className="sticky top-0 z-50 bg-gray-900 backdrop-blur-md shadow-sm border-b-2 border-b-gray-900">
-      <div className="flex items-center justify-center md:justify-between px-4 py-1 ">
+      <div className="flex items-center justify-center md:justify-between px-4 py-1">
         {/* Logo */}
         <Link to="/">
           <img src={logo} alt="logo" className="h-14 w-auto" />
@@ -92,43 +114,59 @@ const Header = () => {
               size={24}
             />
           </span>
+
+          {/* Account dropdown */}
           <div className="relative p-4">
             {isOpen && (
-              <div className="w-40 flex flex-col justify-center items-start absolute top-full right-0 bg-gray-800 p-4 rounded-md">
-                <Link
-                  to={userInfo ? "/profile" : "/login"}
-                  className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
-                >
-                  {userInfo ? userInfo.name : "Login"}
-                </Link>
-                <Link
-                  to={"/order-history"}
-                  className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
-                >
-                  Order History
-                </Link>
-                <Link
-                  to={"/cart"}
-                  className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
-                >
-                  Cart
-                </Link>
-                <Link
-                  to={"/logout"}
-                  className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
-                >
-                  Logout
-                </Link>
-              </div>
+              <>
+                <Backdrop onClose={() => setIsOpen(false)} />
+                <div className="w-40 flex flex-col justify-center items-start absolute top-full right-0 bg-gray-800 p-4 rounded-md z-50">
+                  <Link
+                    to={userInfo ? "/profile" : "/login"}
+                    onClick={() => setIsOpen(false)}
+                    className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
+                  >
+                    {userInfo ? userInfo.name : "Login"}
+                  </Link>
+                  <Link
+                    to={"/order-history"}
+                    onClick={() => setIsOpen(false)}
+                    className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
+                  >
+                    Order History
+                  </Link>
+                  <Link
+                    to={"/cart"}
+                    onClick={() => setIsOpen(false)}
+                    className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
+                  >
+                    Cart
+                  </Link>
+                  <Link
+                    onClick={() => {
+                      setIsOpen(false);
+                      handleLogout();
+                    }}
+                    className="w-full hover:bg-gray-700 rounded-sm px-2 py-2"
+                  >
+                    Logout
+                  </Link>
+                </div>
+              </>
             )}
             <AiOutlineUser
               type="text"
               className="cursor-pointer"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => {
+                {
+                  userInfo ? setIsOpen(!isOpen) : navigate("/login");
+                }
+              }}
               size={24}
             />
           </div>
 
+          {/* Cart */}
           <Link to="/cart" className="relative">
             <BsBag size={24} />
             {totalItems > 0 && (

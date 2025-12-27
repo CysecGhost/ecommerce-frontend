@@ -13,7 +13,7 @@ const CartScreen = () => {
   };
 
   return (
-    <section className="h-[60vh]">
+    <section className="min-h-[60vh]">
       {/* Flex Container */}
       <div className="max-w-[1200px] md:mx-auto py-2 md:py-12">
         {/* Heading */}
@@ -35,7 +35,7 @@ const CartScreen = () => {
             <div className="flex-1 w-full">
               {cartItems.map((item) => (
                 <div className="relative space-y-4" key={item._id}>
-                  <div className="flex justify-between items-center space-x-6 space-y-0 border-b-2 border-b-gray-800 shadow-md p-4 rounded">
+                  <div className="flex justify-between items-center space-x-6 space-y-0 border-b-2 border-b-gray-800 shadow-md p-4 rounded-lg">
                     <div className="flex justify-between items-center gap-3">
                       <div>
                         <Link to={`/products/${item._id}`}>
@@ -157,7 +157,6 @@ const CartScreen = () => {
           </div>
         )}
       </div>
-      {/* <Footer /> */}
     </section>
   );
 };

@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Form, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useGetProfileQuery,
-  useUpdateProfileMutation,
-} from "../slices/userApiSlice";
+import { useUpdateProfileMutation } from "../slices/userApiSlice";
 import { setCredentials } from "../slices/authSlice";
 
 import FormContainer from "../components/FormContainer";
