@@ -1,16 +1,56 @@
-# React + Vite
+# E-Commerce Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern e-commerce frontend built with React, Redux Toolkit, Tailwind CSS and RTK Query.
 
-Currently, two official plugins are available:
+## Features
+- Product search, sorting & filtering
+- Pagination
+- Cart & checkout flow
+- Order history
+- Authentication
+- Responsive design (mobile + desktop)
+- Bottom mobile navigation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshots
+- Home Page
+- Product Listing with Filters & Sorting
+- Cart
+- Orders History
 
-## React Compiler
+<img width="1920" height="2955" alt="image" src="https://github.com/user-attachments/assets/1e987b9e-f3dc-4ac9-b218-aeff3a96decc" />
+<img width="1920" height="2032" alt="image" src="https://github.com/user-attachments/assets/085f2dee-3b22-4036-a98f-f2564e8a0a10" />
+<img width="1920" height="965" alt="image" src="https://github.com/user-attachments/assets/7f4c64a6-d6fb-44e6-a6e4-213f13d96a75" />
+<img width="1920" height="1031" alt="image" src="https://github.com/user-attachments/assets/3c30699f-d354-49b8-ace8-328c537024b2" />
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
+- React
+- Redux Toolkit & RTK Query
+- React Router
+- Tailwind CSS
+- Vite
 
-## Expanding the ESLint configuration
+## Deployment
+- Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Environment Variables
+- VITE_API_URL=https://your-backend-url.up.railway.app
+
+## Installation & Setup
+- git clone https://github.com/CysecGhost/ecommerce-frontend.git
+- cd ecommerce-frontend
+- npm install
+- npm run client
+
+## Live
+- https://ecommerce-frontend-jet-chi.vercel.app/
+
+## Future Improvements
+- Online payment gateway integration
+- Admin dashboard for product & order management
+- Product reviews & ratings
+- Wishlist functionality
+
+## Author
+Shahid Ali 
+GitHub: https://github.com/CysecGhost
+
