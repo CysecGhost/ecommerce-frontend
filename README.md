@@ -55,6 +55,6 @@ Modern e-commerce frontend built with React, Redux Toolkit, Tailwind CSS and RTK
 - Wishlist functionality
 
 ## Author
-Shahid Ali 
-GitHub: https://github.com/CysecGhost
+- Shahid Ali 
+- GitHub: https://github.com/CysecGhost
 
