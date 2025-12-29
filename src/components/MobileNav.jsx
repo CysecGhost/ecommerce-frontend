@@ -63,7 +63,7 @@ const MobileNav = () => {
         ></div>
       )}
       <div
-        className={`h-[90vh] fixed bottom-0 left-0 right-0 transform transition-transform duration-300 ease-in-out ${
+        className={`h-[90vh] fixed bottom-0 left-0 right-0 z-60 transform transition-transform duration-300 ease-in-out ${
           showSearch ? "translate-y-0" : "translate-y-full"
         } bg-gray-900 rounded-t-2xl shadow-lg`}
       >
@@ -100,7 +100,7 @@ const MobileNav = () => {
         ></div>
       )}
       <div
-        className={`h-[90vh] fixed bottom-0 left-0 right-0 transform transition-transform duration-300 ease-in-out ${
+        className={`h-[90vh] fixed bottom-0 left-0 right-0 z-60 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-y-0" : "translate-y-full"
         } bg-gray-900 rounded-t-2xl shadow-lg`}
       >
@@ -166,7 +166,7 @@ const MobileNav = () => {
       )}
       {userInfo && (
         <div
-          className={`h-[90vh] fixed bottom-0 left-0 right-0 transform transition-transform duration-300 ease-in-out ${
+          className={`h-[90vh] fixed bottom-0 left-0 right-0 z-60 transform transition-transform duration-300 ease-in-out ${
             isAccountOpen ? "translate-y-0" : "translate-y-full"
           } bg-gray-900 rounded-t-2xl shadow-lg`}
         >

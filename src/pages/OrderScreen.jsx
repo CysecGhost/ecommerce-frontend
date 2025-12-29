@@ -14,7 +14,7 @@ const OrderScreen = () => {
     );
 
   return (
-    <div className="max-w-6xl mx-auto py-10 px-4">
+    <div className="max-w-6xl mx-auto py-10 px-4 pb-20">
       <h1 className="text-4xl font-bold mb-8 tracking-tight">
         Order{" "}
         <span className="text-blue-600 text-2xl md:text-4xl">{order._id}</span>

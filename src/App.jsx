@@ -9,8 +9,22 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const location = useLocation();
 
-  const hideFooter = ["/login", "/register"];
-  const shouldHideFooter = hideFooter.includes(location.pathname);
+  const hideFooter = [
+    "/login",
+    "/register",
+    "/shipping",
+    "/payment",
+    "/place-order",
+    "/order-history",
+    "/profile",
+    "/update-profile",
+  ];
+
+  const hideFooterPrefixes = ["/orders/"];
+
+  const shouldHideFooter =
+    hideFooter.includes(location.pathname) ||
+    hideFooterPrefixes.some((path) => location.pathname.startsWith(path));
   return (
     <div className="min-h-screen text-white bg-gray-900 font-[Inter]">
       <Header />
