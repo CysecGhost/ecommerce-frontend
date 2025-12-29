@@ -62,11 +62,14 @@ const Profile = () => {
         </p>
 
         <div className="mt-12 flex justify-between space-x-4">
-          <Button onClick={() => navigate("/update-profile")}>
+          <Button
+            className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+            onClick={() => navigate("/update-profile")}
+          >
             Edit Profile
           </Button>
           <Button
-            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+            className="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700"
             onClick={handleLogout}
           >
             Logout

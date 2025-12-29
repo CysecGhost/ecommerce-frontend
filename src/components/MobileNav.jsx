@@ -23,6 +23,9 @@ const MobileNav = () => {
   const [keyword, setKeyword] = useState("");
 
   const { userInfo } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
+
+  const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
 
   const [logoutMutation] = useLogoutMutation();
 
@@ -192,7 +195,7 @@ const MobileNav = () => {
                   Order History
                 </button>
               </Link>
-              <Link to="/cart">
+              <Link to="/cart" className="relative">
                 <button
                   onClick={() => setIsAccountOpen(false)}
                   className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700"
@@ -244,8 +247,16 @@ const MobileNav = () => {
           </Link>
         </li>
         <li className="">
-          <Link to="/cart" className="flex flex-col items-center text-sm">
+          <Link
+            to="/cart"
+            className="relative flex flex-col items-center text-sm"
+          >
             <BsBag size={20} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {totalItems}
+              </span>
+            )}
             Cart
           </Link>
         </li>

@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import Keyboard from "../assets/Homepage-Keyboard-2.jpg";
 import Headphones from "../assets/Homepage-Headphones-4.jpg";
 import Watch from "../assets/Homepage-Smartwatch-2.jpg";
-import Headphones2 from "../assets/Homepage-Headphones-video-1.mp4";
+import img from "../assets/Homepage-Smartwatch-3.jpg";
 
 const slides = [Keyboard, Headphones, Watch];
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   const [current, setCurrent] = useState(0);
   const isThrottled = useRef(false);
 
@@ -16,6 +18,15 @@ const Hero = () => {
     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   const prevSlide = () =>
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.play().catch(() => {});
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,18 +90,11 @@ const Hero = () => {
       ))}
 
       {/* Carousel or Slides sm */}
-      <div className="flex md:hidden absolute inset-0 bg-black/50 w-full h-[95%] overflow-hidden transition-opacity duration-700 border-b-2 border-b-gray-900">
-        <Link to={"/products"}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          >
-            <source src={Headphones2} type="video/mp4" />
-          </video>
-        </Link>
+      <div
+        className="flex md:hidden absolute inset-0 bg-black/50 w-full h-[70svh] overflow-hidden"
+        onClick={() => navigate("/products")}
+      >
+        <img src={img} alt="Slide 0" className="h-full w-full object-cover" />
       </div>
 
       {/* Dots */}

@@ -5,51 +5,53 @@ const Footer = () => {
     <footer className="py-14 px-2 border-t-2 border-gray-800">
       <div className="container mx-auto flex flex-col items-center space-y-6 md:flex-row">
         {/* Grid Columns */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pb-6">
-          {/* Column 1 */}
-          <div className="flex flex-col items-start space-y-2">
-            <h3 className="text-lg font-bold">Support</h3>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              FAQ
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Help Center
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Community Guidelines
-            </a>
-          </div>
+        <div className="w-full flex flex-col md:flex-row gap-4 justify-between items-center">
+          <div className="w-full flex justify-between items-start gap-6">
+            {/* Column 1 */}
+            <div className="w-full flex flex-col items-start space-y-2">
+              <h3 className="text-lg font-bold">Support</h3>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                FAQ
+              </a>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Help Center
+              </a>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Community Guidelines
+              </a>
+            </div>
 
-          {/* Column 2 */}
-          <div className="flex flex-col items-start space-y-2">
-            <h3 className="text-lg font-bold">Company</h3>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Blogs
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              About Us
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Contact
-            </a>
-          </div>
+            {/* Column 2 */}
+            <div className="w-full flex flex-col items-start space-y-2">
+              <h3 className="text-lg font-bold">Company</h3>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Blogs
+              </a>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                About Us
+              </a>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Contact
+              </a>
+            </div>
 
-          {/* Column 3 */}
-          <div className="flex flex-col items-start space-y-2">
-            <h3 className="text-lg font-bold">Legal</h3>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Terms of Service
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">
-              Disclaimer
-            </a>
+            {/* Column 3 */}
+            <div className="w-full flex flex-col items-start space-y-2">
+              <h3 className="text-lg font-bold">Legal</h3>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Terms of Service
+              </a>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-sm text-gray-400 hover:text-gray-200">
+                Disclaimer
+              </a>
+            </div>
           </div>
 
           {/* Column 4 */}
-          <div className=" w-full flex flex-col justify-center items-center gap-4 pt-4">
+          <div className="w-full flex flex-col-reverse justify-center items-center gap-1 mb-12">
             {/* Copyright */}
             <div className="flex justify-center items-center gap-4 pt-4">
               <p className="text-gray-400">&copy; 2025</p>

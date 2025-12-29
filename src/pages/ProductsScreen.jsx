@@ -64,9 +64,9 @@ const ProductsScreen = () => {
   return (
     <section className="relative px-2 py-2 border-b-2 border-b-gray-900">
       {/* Flex Container */}
-      <div className="flex flex-col space-y-2 space-x-0">
+      <div className="flex flex-col space-y-2">
         {/* Heading and Subtext */}
-        <div className="flex flex-col justify-center items-center space-y-4 space-x-0">
+        <div className="flex flex-col justify-center items-center space-y-4">
           <h2 className="hidden md:block text-3xl font-[Montserrat] font-bold md:text-4xl">
             Products
           </h2>
@@ -77,17 +77,17 @@ const ProductsScreen = () => {
         </div>
 
         {/* Flex Container */}
-        <div className="relative w-full flex flex-col justify-center items-center space-y-2 space-x-0 mt-6">
+        <div className="relative w-full flex flex-col justify-center items-center space-y-2 mt-6">
           <div
             className={`relative w-full flex flex-row justify-center md:justify-start items-center space-y-0 space-x-2 py-2 bg-gray-900 ${
-              isSticky ? "sticky inset-14 z-50 shadow-lg" : ""
+              isSticky ? "sticky top-14 left-0 right-0 z-50 shadow-lg" : ""
             }`}
           >
             {/* Filter */}
             <div className="relative inline-block">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative text-left w-48 md:w-60 pl-3 pr-8 py-1 rounded-xl border-2 border-gray-500 shadow-sm bg-gray-900 cursor-pointer"
+                className="relative text-left w-42 md:w-60 pl-3 pr-8 py-1 rounded-xl border-2 border-gray-500 shadow-sm bg-gray-900 cursor-pointer"
               >
                 <span>Filter by</span>
                 <span className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -103,7 +103,7 @@ const ProductsScreen = () => {
                     className="fixed inset-0 bg-transparent opacity-50"
                   />
                   <div
-                    className={`fixed bottom-0 left-0 right-0 md:absolute md:top-full md:left-0 md:h-screen md:w-60 h-[70vh] w-full px-2 bg-gray-900 transform transition duration-500 ease-in-out ${
+                    className={`w-screen fixed bottom-0 left-0 right-0 md:absolute md:top-full md:left-0 md:h-screen md:w-60 h-[70vh] px-2 bg-gray-900 transform transition duration-500 ease-in-out ${
                       isOpen
                         ? "md:translate-x-0 translate-y-0"
                         : "md:translate-x-full translate-y-full"
@@ -250,7 +250,7 @@ const ProductsScreen = () => {
                   params.set("page", 1);
                   setSearchParams(params);
                 }}
-                className="appearance-none pl-3 pr-8 py-1 rounded-xl border-2 border-gray-500 shadow-sm bg-gray-900 cursor-pointer text-left"
+                className="appearance-none px-4 py-1 rounded-xl border-2 border-gray-500 shadow-sm bg-gray-900 cursor-pointer text-left"
               >
                 <option value="newest">Newest</option>
                 <option value="recommended">Recommended</option>

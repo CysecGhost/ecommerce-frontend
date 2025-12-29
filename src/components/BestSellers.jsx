@@ -12,9 +12,9 @@ const BestSellers = () => {
   return (
     <section className="my-12">
       {/* Flex Container */}
-      <div className="flex flex-col justify-center items-center space-y-6 space-x-0">
+      <div className="flex flex-col justify-center items-center">
         {/* Heading and Subtext */}
-        <div className="flex flex-col justify-center items-center space-y-4 space-x-0">
+        <div className="flex flex-col justify-center items-center space-y-4">
           <h2 className="text-3xl font-[Montserrat] font-bold md:text-4xl">
             Best Sellers
           </h2>
@@ -25,7 +25,7 @@ const BestSellers = () => {
       </div>
 
       {/* Products Grid */}
-      <div className="relative mt-6">
+      <div className="relative mt-2">
         {/* Cards Container */}
         <div className="max-w-[1800px] w-full mx-auto relative">
           <div className="md:px-16 px-4">
