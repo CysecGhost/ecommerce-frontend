@@ -57,7 +57,7 @@ const OrderHistoryScreen = () => {
         })}
       </section>
       {/* Mobile View */}
-      <section className="md:hidden px-2">
+      <section className="md:hidden px-2 pb-20">
         <div className="flex flex-col justify-center">
           <div className="text-2xl md:text-3xl font-[Montserrat] text-center py-8">
             <h1>Order History</h1>
