@@ -17,10 +17,14 @@ Modern e-commerce frontend built with React, Redux Toolkit, Tailwind CSS and RTK
 - Cart
 - Orders History
 
-<img width="1920" height="2955" alt="image" src="https://github.com/user-attachments/assets/1e987b9e-f3dc-4ac9-b218-aeff3a96decc" />
-<img width="1920" height="2032" alt="image" src="https://github.com/user-attachments/assets/085f2dee-3b22-4036-a98f-f2564e8a0a10" />
-<img width="1920" height="965" alt="image" src="https://github.com/user-attachments/assets/7f4c64a6-d6fb-44e6-a6e4-213f13d96a75" />
-<img width="1920" height="1031" alt="image" src="https://github.com/user-attachments/assets/3c30699f-d354-49b8-ace8-328c537024b2" />
+![HomePage](https://github.com/user-attachments/assets/1e987b9e-f3dc-4ac9-b218-aeff3a96decc)
+
+![Products](https://github.com/user-attachments/assets/085f2dee-3b22-4036-a98f-f2564e8a0a10)
+
+![Cart](https://github.com/user-attachments/assets/7f4c64a6-d6fb-44e6-a6e4-213f13d96a75)
+
+![OrdersHistory](https://github.com/user-attachments/assets/3c30699f-d354-49b8-ace8-328c537024b2)
+
 
 ## Tech Stack
 - React
